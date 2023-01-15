@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  db:
+    container_name: db
+    hostname: db
+    image: mariadb:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: R00tP@sswd
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: manager
+      MYSQL_PASSWORD: secret
+    volumes:
+      - wordpress-db-data:/var/lib/mysql
+    networks:
+      - wordpress-network
+
+  wordpress:
+    container_name: wordpress
+    hostname: wordpress
+    image: wordpress:latest
+    restart: always
+    environment:
+      WORDPRESS_DB_USER: manager
+      WORDPRESS_DB_PASSWORD: secret
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./www:/var/www/html
+    links:
+      - db:db
+    ports:
+      - 80:80
+    networks:
+      - wordpress-network
+
+volumes:
+  wordpress-db-data:
+    name: wordpress-db-data
+
+networks:
+  wordpress-network:
+    name: wordpress-network
