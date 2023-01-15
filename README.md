@@ -1,6 +1,4 @@
 # Wordpress Docker Compose
-Wordpress with Docker Compose and MariaDB
-
 This repository has the [**Docker Compose file**](docker-compose.yml) to create a WordPress project.
 
 ## Download and Deploy
