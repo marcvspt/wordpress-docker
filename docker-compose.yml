@@ -1,45 +1,45 @@
 version: '3.7'
 
 services:
-  db:
-    container_name: db
-    hostname: db
-    image: mariadb:10.7.8
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: R00tP@sswd
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: manager
-      MYSQL_PASSWORD: secret
-    volumes:
-      - wordpress-db-data:/var/lib/mysql
-    networks:
-      - wordpress-network
+    db:
+        container_name: db
+        hostname: db
+        image: mariadb:10.7.8
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: R00tP@sswd
+            MYSQL_DATABASE: wordpress
+            MYSQL_USER: manager
+            MYSQL_PASSWORD: secret
+        volumes:
+            - wordpress-db-data:/var/lib/mysql
+        networks:
+            - wordpress-network
 
-  wordpress:
-    container_name: wordpress
-    hostname: wordpress
-    image: wordpress:6.2.0-php8.2
-    restart: always
-    depends_on:
-      - db
-    environment:
-      WORDPRESS_DB_USER: manager
-      WORDPRESS_DB_PASSWORD: secret
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: wordpress
-    volumes:
-      - ./www:/var/www/html
-    ports:
-      - 80:80
-    networks:
-      - wordpress-network
+    wordpress:
+        container_name: wordpress
+        hostname: wordpress
+        image: wordpress:6.2.0-php8.2
+        restart: always
+        depends_on:
+            - db
+        environment:
+            WORDPRESS_DB_USER: manager
+            WORDPRESS_DB_PASSWORD: secret
+            WORDPRESS_DB_HOST: db
+            WORDPRESS_DB_NAME: wordpress
+        volumes:
+            - ./www:/var/www/html
+        ports:
+            - 80:80
+        networks:
+            - wordpress-network
 
 volumes:
-  wordpress-db-data:
-    name: wordpress-db-data
+    wordpress-db-data:
+        name: wordpress-db-data
 
 networks:
-  wordpress-network:
-    name: wordpress-network
-    driver: bridge
+    wordpress-network:
+        name: wordpress-network
+        driver: bridge
