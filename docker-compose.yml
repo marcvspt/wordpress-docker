@@ -21,6 +21,8 @@ services:
     hostname: wordpress
     image: wordpress:6.2.0-php8.2
     restart: always
+    depends_on:
+      - db
     environment:
       WORDPRESS_DB_USER: manager
       WORDPRESS_DB_PASSWORD: secret
@@ -40,3 +42,4 @@ volumes:
 networks:
   wordpress-network:
     name: wordpress-network
+    driver: bridge
