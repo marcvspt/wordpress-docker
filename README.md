@@ -8,4 +8,4 @@ git clone https://github.com/marcvspt/wordpress-docker
 cd wordpress-docker
 docker-compose up -d
 ```
-**Note:** the [Web Directory: www](www) contains the PHP files than WordPress use for the plugins, themes, etc. When you download the repository this directory will be empty, when you start **docker-compose** this folder would gona fill.
+**Note:** the [Web Directory: www](www) contains the PHP files than WordPress use for the plugins, themes, etc. When you download the repository this directory will not exists
