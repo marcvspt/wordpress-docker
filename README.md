@@ -4,7 +4,7 @@ This repository has the [**Docker Compose file**](docker-compose.yml) to create 
 ## Download and Deploy
 The first time, the database user is created, you must wait around a minute and now you can start edit your WordPress project deployed in **localhost**.
 ```bash
-git clone https://github.com/atriox2510/wordpress-docker
+git clone https://github.com/marcvspt/wordpress-docker
 cd wordpress-docker
 docker-compose up -d
 ```
