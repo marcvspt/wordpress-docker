@@ -4,7 +4,7 @@ services:
     db:
         container_name: db
         hostname: db
-        image: mariadb:10.7.8
+        image: mariadb:lts
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: R00tP@sswd
@@ -19,7 +19,7 @@ services:
     wordpress:
         container_name: wordpress
         hostname: wordpress
-        image: wordpress:6.2.0-php8.2
+        image: wordpress:6.2.2-php8.2
         restart: always
         depends_on:
             - db
